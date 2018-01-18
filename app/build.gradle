@@ -20,8 +20,13 @@ android {
         targetSdkVersion 26
         versionCode 19
         versionName = getVersionName()
+        vectorDrawables.useSupportLibrary = true
+        javaCompileOptions {
+            annotationProcessorOptions {
+                includeCompileClasspath true
+            }
+        }
     }
-
     File keystoreFile = file('keystore.properties')
 
     signingConfigs {
@@ -52,6 +57,8 @@ android {
             assets.srcDirs += 'src/testUtils/assets'
         }
     }
+
+    flavorDimensions "default"
 
     productFlavors {
         full {
@@ -111,35 +118,35 @@ ext {
 }
 
 dependencies {
-    compile "com.android.support:support-v4:${supportLibVersion}"
-    compile "com.android.support:appcompat-v7:${supportLibVersion}"
-    compile "com.android.support:cardview-v7:${supportLibVersion}"
-    compile "com.android.support:preference-v14:${supportLibVersion}"
-    compile "com.android.support:support-v13:${supportLibVersion}"
+    implementation "com.android.support:support-v4:${supportLibVersion}"
+    implementation "com.android.support:appcompat-v7:${supportLibVersion}"
+    implementation "com.android.support:cardview-v7:${supportLibVersion}"
+    implementation "com.android.support:preference-v14:${supportLibVersion}"
+    implementation "com.android.support:support-v13:${supportLibVersion}"
 
-    compile 'com.fasterxml.jackson.core:jackson-databind:2.5.2'
-    compile 'com.jakewharton:butterknife:6.1.0'
-    compile 'com.squareup.okhttp:okhttp:2.3.0'
-    compile 'com.squareup.picasso:picasso:2.5.2'
-    compile 'de.greenrobot:eventbus:2.4.0'
-    compile 'org.jmdns:jmdns:3.5.1'
-    compile 'com.astuetz:pagerslidingtabstrip:1.0.1'
-    compile 'com.melnykov:floatingactionbutton:1.3.0'
-    compile 'at.blogc:expandabletextview:1.0.3'
-    compile 'com.sothree.slidinguppanel:library:3.3.1'
+    implementation 'com.fasterxml.jackson.core:jackson-databind:2.5.2'
+    implementation 'com.jakewharton:butterknife:6.1.0'
+    implementation 'com.squareup.okhttp:okhttp:2.3.0'
+    implementation 'com.squareup.picasso:picasso:2.5.2'
+    implementation 'de.greenrobot:eventbus:2.4.0'
+    implementation 'org.jmdns:jmdns:3.5.1'
+    implementation 'com.astuetz:pagerslidingtabstrip:1.0.1'
+    implementation 'com.melnykov:floatingactionbutton:1.3.0'
+    implementation 'at.blogc:expandabletextview:1.0.3'
+    implementation 'com.sothree.slidinguppanel:library:3.3.1'
 
-    androidTestCompile 'com.android.support.test:runner:0.5'
-    androidTestCompile 'com.android.support.test:rules:0.5'
-    androidTestCompile 'org.hamcrest:hamcrest-library:1.3'
-    androidTestCompile 'com.android.support.test.espresso:espresso-core:2.2.2'
-    androidTestCompile 'com.android.support.test.espresso:espresso-idling-resource:2.2.2'
-    androidTestCompile "com.android.support:support-v13:${supportLibVersion}"
-    instrumentationTestCompile 'junit:junit:4.12'
+    androidTestImplementation 'com.android.support.test:runner:0.5'
+    androidTestImplementation 'com.android.support.test:rules:0.5'
+    androidTestImplementation 'org.hamcrest:hamcrest-library:1.3'
+    androidTestImplementation 'com.android.support.test.espresso:espresso-core:2.2.2'
+    androidTestImplementation 'com.android.support.test.espresso:espresso-idling-resource:2.2.2'
+    androidTestImplementation "com.android.support:support-v13:${supportLibVersion}"
+    instrumentationTestImplementation 'junit:junit:4.12'
 
-    testCompile 'org.robolectric:robolectric:3.1.1'
-    testCompile 'junit:junit:4.12'
+    testImplementation 'org.robolectric:robolectric:3.1.1'
+    testImplementation 'junit:junit:4.12'
 
-    compile fileTree(dir: 'libs', include: ['*.jar'])
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
 }
 
 // Get the path to ADB.  Required when running tests directly from Android Studio.
